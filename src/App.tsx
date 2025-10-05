@@ -6,8 +6,8 @@ export default function App() {
 
   return (
     <div>
-      {/* <Form1 /> */}
-      <Form2 />
+      <Form1 />
+      {/* <Form2 /> */}
     </div>
   );
 }
