@@ -34,27 +34,31 @@ export default function Form1() {
         console.log(data);
     };
 
-    console.log(watch()); // watch input value by passing the name of it
+    // const firstName = watch("firstName");
+
+    // console.log(watch()); // watch input value by passing the name of it
 
     // console.log(watch(["firstName","lastName"]));
 
     // console.log(watch('firstName','archit')); // firstName, and default value
 
-    // useEffect(() => {
-    //     const subsription = watch((data) => {
-    //         console.log(data);
-    //     });
 
-    //     return () => {
-    //         subsription.unsubscribe();
-    //     };
-    // }, [watch]);
+    // optimize way to do that in this re-render won't happen
+    useEffect(() => {
+        const subsription = watch((data) => {
+            console.log(data);
+        });
+
+        return () => {
+            subsription.unsubscribe();
+        };
+    }, [watch]);
 
 
     return (
         /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
         <form onSubmit={handleSubmit(onSubmit)}>
-
+            {/* <p>{firstName === 'user' ? 'Us er name is selected' : 'Other'}</p> */}
             <div>
                 FirstName:{" "}
                 <input
