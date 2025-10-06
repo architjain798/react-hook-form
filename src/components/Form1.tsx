@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 
 import type { SubmitHandler } from "react-hook-form";
@@ -21,11 +22,34 @@ export default function Form1() {
         },
     });
 
+    const renderCount = useRef(0);
+
+    renderCount.current += 1;
+
+    useEffect(() => {
+        console.log(`Render count: ${renderCount.current}`);
+    }, [renderCount.current]);
+
     const onSubmit: SubmitHandler<Inputs> = (data) => {
         console.log(data);
     };
 
     console.log(watch()); // watch input value by passing the name of it
+
+    // console.log(watch(["firstName","lastName"]));
+
+    // console.log(watch('firstName','archit')); // firstName, and default value
+
+    // useEffect(() => {
+    //     const subsription = watch((data) => {
+    //         console.log(data);
+    //     });
+
+    //     return () => {
+    //         subsription.unsubscribe();
+    //     };
+    // }, [watch]);
+
 
     return (
         /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
